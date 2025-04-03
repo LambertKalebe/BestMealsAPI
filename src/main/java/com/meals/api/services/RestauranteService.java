@@ -1,17 +1,18 @@
 package com.meals.api.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.meals.api.dao.IRestauranteDAO;
 import com.meals.api.domain.Restaurante;
+import com.meals.api.repositories.RestauranteRepository;
 
 @Service
 public class RestauranteService {
     @Autowired
-    public IRestauranteDAO restauranteService;
+    public RestauranteRepository restauranteService;
 
     public Restaurante save(Restaurante restaurante) {
         return restauranteService.save(restaurante);
@@ -21,7 +22,7 @@ public class RestauranteService {
         restauranteService.delete(restaurante);
     }
 
-    public Restaurante findById(Long id) {
+    public Optional<Restaurante> findById(Long id) {
         return restauranteService.findById(id);
     }
 

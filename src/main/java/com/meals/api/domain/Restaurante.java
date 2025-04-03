@@ -1,12 +1,17 @@
 package com.meals.api.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 // Criacao da entidade Restaurante, com seus atributos e metodos de acesso
 // Atributos: id, nome, endereco, telefone e refeicoes (Falta algo??)
 @Entity
 public class Restaurante {
-    public Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     public String nome;
     public String endereco;
     public String telefone;
