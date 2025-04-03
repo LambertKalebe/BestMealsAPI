@@ -1,5 +1,54 @@
 package com.meals.api.domain;
 
-public class Restaurante {
+import jakarta.persistence.Entity;
 
+// Criacao da entidade Restaurante, com seus atributos e metodos de acesso
+// Atributos: id, nome, endereco, telefone e refeicoes (Falta algo??)
+@Entity
+public class Restaurante {
+    public Long id;
+    public String nome;
+    public String endereco;
+    public String telefone;
+    public String refeicoes;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setRefeicoes(String refeicoes) {
+        this.refeicoes = refeicoes;
+    }
+
+    public String getRefeicoes() {
+        return refeicoes;
+    }
 }
