@@ -1,13 +1,18 @@
+/*
+ * Criação da entidade Restaurante, com seus atributos e metodos de acesso
+ * Atributos: id, nome, endereco, telefone (Falta algo??)
+ */
+
 package com.meals.api.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-// Criacao da entidade Restaurante, com seus atributos e metodos de acesso
-// Atributos: id, nome, endereco, telefone e refeicoes (Falta algo??)
 @Entity
+@Table(name = "restaurantes")
 public class Restaurante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +20,6 @@ public class Restaurante {
     public String nome;
     public String endereco;
     public String telefone;
-    public String refeicoes;
 
     public void setId(Long id) {
         this.id = id;
@@ -47,13 +51,5 @@ public class Restaurante {
 
     public String getTelefone() {
         return telefone;
-    }
-
-    public void setRefeicoes(String refeicoes) {
-        this.refeicoes = refeicoes;
-    }
-
-    public String getRefeicoes() {
-        return refeicoes;
     }
 }
