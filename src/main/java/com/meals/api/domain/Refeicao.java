@@ -1,6 +1,8 @@
 package com.meals.api.domain;
 
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,7 +25,7 @@ public class Refeicao {
 
     @ManyToMany
     @JoinTable(name = "refeicao_restaurante", joinColumns = @JoinColumn(name = "refeicao_id"), inverseJoinColumns = @JoinColumn(name = "restaurante_id"))
-    private Set<Restaurante> restaurantes;
+    private Set<Restaurante> restaurantes = new HashSet<>();
 
     public Long getId() {
         return id;

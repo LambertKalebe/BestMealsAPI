@@ -7,8 +7,9 @@
 
 package com.meals.api.services;
 
+import java.math.BigDecimal;
 import java.util.List;
-
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,20 @@ public class RefeicaoService {
 
     // Cria a nova refeição
     @Transactional
-    public Refeicao save(String nome) {
-
+    public Refeicao save(String nome, List<Map<String, Object>> restaurantes) {
+        // Cria a nova refeição
         Refeicao refeicao = new Refeicao();
         refeicao.setNome(nome);
-        return refeicaoRepository.save(refeicao);
+        Refeicao savedRefeicao = refeicaoRepository.save(refeicao);
+
+        // Insere os dados na tabela intermediária refeicao_restaurante
+        for (Map<String, Object> restaurante : restaurantes) {
+            Long restauranteId = ((Number) restaurante.get("id")).longValue();
+            BigDecimal preco = new BigDecimal(restaurante.get("preco").toString());
+            refeicaoRepository.insertRefeicaoRestaurante(savedRefeicao.getId(), restauranteId, preco);
+        }
+
+        return savedRefeicao;
     }
 
     public void delete(Refeicao refeicao) {

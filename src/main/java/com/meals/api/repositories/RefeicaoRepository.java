@@ -35,11 +35,13 @@ public interface RefeicaoRepository extends JpaRepository<Refeicao, Long> {
     void insertRefeicaoRestaurante(Long refeicaoId, Long restauranteId, BigDecimal preco);
 
     // Método para deletar uma refeição e um restaurante na tabela intermediária
-    void delete(Refeicao refeicao);
+    void delete(@SuppressWarnings("null") Refeicao refeicao);
 
     // Método para encontrar uma refeição pelo id
-    Optional<Refeicao> findById(Long id);
+    @SuppressWarnings("null")
+    Optional<Refeicao> findById(@SuppressWarnings("null") Long id);
 
     // Método para encontrar todas as refeições
+    @SuppressWarnings("null")
     List<Refeicao> findAll();
 }
