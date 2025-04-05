@@ -2,6 +2,7 @@
 
 package com.meals.api.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,10 +40,12 @@ public class RefeicaoController {
     }
 
     // Criação da refeição
+    @SuppressWarnings("unchecked")
     @PostMapping("/create")
     public Refeicao createRefeicao(@RequestBody Map<String, Object> payload) {
         String nome = (String) payload.get("nome");
-        return refeicaoService.save(nome);
+        List<Map<String, Object>> restaurantes = (List<Map<String, Object>>) payload.get("restaurantes");
+        return refeicaoService.save(nome, restaurantes);
     }
 
     @GetMapping("/create")
@@ -91,7 +94,6 @@ public class RefeicaoController {
             @SuppressWarnings("unused")
             public final Object exemplo = new Object() {
                 public final String nome = "Refeição Atualizada";
-                public final String preco = "29.99";
             };
         };
     }
