@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.meals.api.domain.RestauranteEvaluation;
@@ -20,5 +22,9 @@ public interface RestauranteEvaluationRepository extends JpaRepository<Restauran
     Optional<RestauranteEvaluation> findById(Long id);
 
     List<RestauranteEvaluation> findAll();
+
+    // Média das avaliações
+    @Query("SELECT AVG(r.evaluation) FROM RestauranteEvaluation r WHERE r.idRestaurante = :idRestaurante")
+    Double findAverageEvaluationByRestauranteId(@Param("idRestaurante") Long idRestaurante);
 
 }
