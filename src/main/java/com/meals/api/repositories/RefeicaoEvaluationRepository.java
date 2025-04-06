@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.meals.api.domain.RefeicaoEvaluation;
 
@@ -14,5 +16,9 @@ public interface RefeicaoEvaluationRepository extends JpaRepository<RefeicaoEval
 
     @SuppressWarnings("null")
     List<RefeicaoEvaluation> findAll();
+
+    // Média das avaliações
+    @Query("SELECT AVG(r.evaluation) FROM mealevaluation r WHERE r.id_meal = :idMeal")
+    Double findAverageEvaluationByMealId(@Param("idMeal") Long idMeal);
 
 }
