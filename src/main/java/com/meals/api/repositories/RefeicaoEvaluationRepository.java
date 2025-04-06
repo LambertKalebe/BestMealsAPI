@@ -18,7 +18,7 @@ public interface RefeicaoEvaluationRepository extends JpaRepository<RefeicaoEval
     List<RefeicaoEvaluation> findAll();
 
     // Média das avaliações
-    @Query("SELECT AVG(r.evaluation) FROM mealevaluation r WHERE r.id_meal = :idMeal")
+    @Query("SELECT AVG(r.evaluation) FROM RefeicaoEvaluation r WHERE r.idRefeicao = :idMeal")
     Double findAverageEvaluationByMealId(@Param("idMeal") Long idMeal);
 
 }
