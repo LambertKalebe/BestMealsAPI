@@ -15,10 +15,10 @@
 ### Tasks Back-end
 - [x] #BACK-1 Cadastrar, Consultar, Apagar e Atualizar Restaurantes
 - [x] #BACK-2 Pontuar o restaurante com até 5 estrelas
-- [ ] #BACK-3 Consultar a média de pontuação do restaurante X
+- [x] #BACK-3 Consultar a média de pontuação do restaurante X
 - [x] #BACK-4 Cadastrar, Consultar, Apagar e Atualizar Refeições
 - [x] #BACK-5 Pontuar a refeição com até 5 estrelas
-- [ ] #BACK-6 Consultar a média de pontuação da refeição X
+- [x] #BACK-6 Consultar a média de pontuação da refeição X
 
 ### Tasks Front-end
 - [ ] #FRONT-1 Menu superior para acesso aos módulos de Restaurante, Refeições, avaliação do Restaurante e da Refeição
