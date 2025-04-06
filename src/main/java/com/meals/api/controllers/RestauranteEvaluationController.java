@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meals.api.domain.RestauranteEvaluation;
@@ -69,5 +70,10 @@ public class RestauranteEvaluationController {
     @GetMapping("/find/{id}")
     public Object findRestauranteById(@PathVariable Long id) {
         return restauranteEvaluationService.findById(id).orElse(null);
+    }
+
+    @GetMapping("/average/{idRestaurante}")
+    public Double getAverageEvaluation(@PathVariable Long idRestaurante) {
+        return restauranteEvaluationService.getAverageEvaluationByRestauranteId(idRestaurante);
     }
 }

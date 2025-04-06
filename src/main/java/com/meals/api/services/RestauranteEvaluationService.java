@@ -31,4 +31,8 @@ public class RestauranteEvaluationService {
     public List<RestauranteEvaluation> findAll() {
         return restauranteEvaluationRepository.findAll();
     }
+
+    public Double getAverageEvaluationByRestauranteId(Long idRestaurante) {
+        return restauranteEvaluationRepository.findAverageEvaluationByRestauranteId(idRestaurante);
+    }
 }
