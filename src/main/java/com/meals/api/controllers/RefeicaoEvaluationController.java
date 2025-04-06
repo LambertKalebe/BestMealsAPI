@@ -61,4 +61,9 @@ public class RefeicaoEvaluationController {
     public Object findRestauranteById(@PathVariable Long id) {
         return refeicaoEvaluationService.findById(id).orElse(null);
     }
+
+    @GetMapping("/average/{idRefeicao}")
+    public Double getAverageEvaluation(@PathVariable Long idRefeicao) {
+        return refeicaoEvaluationService.getAverageEvaluationByMealId(idRefeicao);
+    }
 }

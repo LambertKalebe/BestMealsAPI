@@ -25,4 +25,8 @@ public class RefeicaoEvaluationService {
     public List<RefeicaoEvaluation> findAll() {
         return refeicaoEvaluationRepository.findAll();
     }
+
+    public Double getAverageEvaluationByMealId(Long idMeal) {
+        return refeicaoEvaluationRepository.findAverageEvaluationByMealId(idMeal);
+    }
 }
