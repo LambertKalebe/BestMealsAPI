@@ -43,6 +43,22 @@ public class RefeicaoService {
         return savedRefeicao;
     }
 
+    @Transactional
+    public void updateRefeicaoCompleta(Long id, String nome, List<Map<String, Object>> restaurantes) {
+        // Atualiza o nome
+        refeicaoRepository.updateRefeicao(id, nome);
+
+        // Deleta os vínculos antigos
+        refeicaoRepository.deleteRefeicaoRestaurantes(id);
+
+        // Adiciona os novos vínculos com preço
+        for (Map<String, Object> restaurante : restaurantes) {
+            Long restauranteId = ((Number) restaurante.get("id")).longValue();
+            BigDecimal preco = new BigDecimal(restaurante.get("preco").toString().replace(",", "."));
+            refeicaoRepository.insertRefeicaoRestaurante(id, restauranteId, preco);
+        }
+    }
+
     public void delete(Refeicao refeicao) {
         refeicaoRepository.delete(refeicao);
     }
@@ -51,10 +67,10 @@ public class RefeicaoService {
         return refeicaoRepository.findById(id);
     }
 
-    @Transactional
-    public int update(Long id, String nome) {
-        return refeicaoRepository.updateRefeicao(id, nome);
-    }
+    // @Transactional
+    // public int update(Long id, String nome) {
+    // return refeicaoRepository.updateRefeicao(id, nome);
+    // }
 
     public List<Refeicao> findAll() {
         return refeicaoRepository.findAll();

@@ -13,7 +13,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.meals.api.domain.Refeicao;
 
@@ -23,9 +25,15 @@ public interface RefeicaoRepository extends JpaRepository<Refeicao, Long> {
     // Método para atualizar o nome da refeição
     // O método updateRefeicao recebe o id da refeição e o novo nome
 
+    @Transactional
     @Modifying
     @Query("UPDATE Refeicao r SET r.nome = :nome WHERE r.id = :id")
-    int updateRefeicao(Long id, String nome);
+    void updateRefeicao(@Param("id") Long id, @Param("nome") String nome);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM refeicao_restaurante WHERE refeicao_id = :refeicaoId", nativeQuery = true)
+    void deleteRefeicaoRestaurantes(Long refeicaoId);
 
     // Método para inserir uma refeição e um restaurante na tabela intermediária
     // O método insertRefeicaoRestaurante recebe o id da refeição, o id do

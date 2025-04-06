@@ -5,6 +5,8 @@ package com.meals.api.controllers;
 import java.util.List;
 import java.util.Map;
 
+import java.util.Optional;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meals.api.domain.Refeicao;
+import com.meals.api.dtos.RefeicaoUpdateDTO;
 import com.meals.api.services.RefeicaoService;
 
 @RestController
@@ -74,12 +77,24 @@ public class RefeicaoController {
 
     // Atualização da refeição
     @PostMapping("/update/{id}")
-    public Refeicao update(@PathVariable Long id, @RequestBody Refeicao refeicao) {
-        int rowsUpdated = refeicaoService.update(id, refeicao.getNome());
-        if (rowsUpdated > 0) {
-            return refeicaoService.findById(id).orElse(null);
+    public ResponseEntity<Refeicao> update(@PathVariable Long id, @RequestBody RefeicaoUpdateDTO dto) {
+        try {
+            List<Map<String, Object>> restaurantes = dto.getRestaurantes().stream().map(rest -> {
+                Map<String, Object> map = new java.util.HashMap<>();
+                map.put("id", rest.getId());
+                map.put("preco", rest.getPreco());
+                return map;
+            }).toList();
+
+            refeicaoService.updateRefeicaoCompleta(id, dto.getNome(), restaurantes);
+
+            Optional<Refeicao> refeicaoAtualizada = refeicaoService.findById(id);
+            return refeicaoAtualizada.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
         }
-        return null;
     }
 
     @GetMapping("/update")
