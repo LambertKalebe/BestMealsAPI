@@ -14,7 +14,7 @@
 
 ### Tasks Back-end
 - [x] #BACK-1 Cadastrar, Consultar, Apagar e Atualizar Restaurantes
-- [ ] #BACK-2 Pontuar o restaurante com até 5 estrelas
+- [x] #BACK-2 Pontuar o restaurante com até 5 estrelas
 - [ ] #BACK-3 Consultar a média de pontuação do restaurante X
 - [x] #BACK-4 Cadastrar, Consultar, Apagar e Atualizar Refeições
 - [ ] #BACK-5 Pontuar a refeição com até 5 estrelas
