@@ -6,7 +6,6 @@
 package com.meals.api.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +23,8 @@ public class RestaurantEvaluationService {
         return restaurantEvaluationRepository.save(restaurantEvaluation);
     }
 
-    public Optional<RestaurantEvaluation> findById(int id) {
-        return restaurantEvaluationRepository.findById(id);
+    public List<RestaurantEvaluation> findByRestaurantId(int restaurantId) {
+        return restaurantEvaluationRepository.findByRestaurantId(restaurantId);
     }
 
     public List<RestaurantEvaluation> findAll() {

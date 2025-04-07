@@ -6,6 +6,8 @@
 
 package com.meals.api.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,4 +19,6 @@ import com.meals.api.domain.RestaurantEvaluation;
 public interface RestaurantEvaluationRepository extends JpaRepository<RestaurantEvaluation, Integer> {
     @Query("SELECT AVG(e.evaluation) FROM RestaurantEvaluation e WHERE e.restaurantId = :restaurantId")
     Double restaurantAverageEvaluation(int restaurantId);
+
+    List<RestaurantEvaluation> findByRestaurantId(int restaurantId);
 }

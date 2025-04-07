@@ -30,12 +30,12 @@ public class RestaurantEvaluationController {
         return restaurantEvaluationService.restaurantAverageEvaluation(restaurantId);
     }
 
-    @GetMapping("/evaluation")
+    @GetMapping("/evaluations")
     public Object getRestaurantEvaluation(@PathVariable int restaurantId) {
-        return restaurantEvaluationService.findAll();
+        return restaurantEvaluationService.findByRestaurantId(restaurantId);
     }
 
-    @PostMapping("/evaluation")
+    @PostMapping("/evaluations")
     public RestaurantEvaluation createRestauranteEvaluation(@PathVariable int restaurantId,
             @RequestBody RestaurantEvaluation restaurantEvaluation) {
         restaurantEvaluation.setRestaurantId(restaurantId);
