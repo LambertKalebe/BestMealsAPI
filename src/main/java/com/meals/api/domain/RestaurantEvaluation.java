@@ -14,28 +14,28 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "restaurantevaluation")
-public class RestauranteEvaluation {
+public class RestaurantEvaluation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Gera automaticamente o ID
-    private Long id;
-    public Long idRestaurante;
-    public int evaluation;
-    public String comment;
+    private int id;
+    private int restaurantId; // Renomeado para seguir convenções de nomenclatura
+    private int evaluation;
+    private String comment;
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setIdRestaurante(Long idRestaurante) {
-        this.idRestaurante = idRestaurante;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public Long getIdRestaurante() {
-        return idRestaurante;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
     public void setEvaluation(int evaluation) {
