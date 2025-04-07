@@ -14,7 +14,7 @@ public class Meal {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     public String name;
 
@@ -27,11 +27,11 @@ public class Meal {
     @ManyToOne
     @JoinColumn(name = "restaurante_id", nullable = false)
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.meals.api.domain.Meal;
 
 @Repository
-public interface MealRepository extends JpaRepository<Meal, Long> {
+public interface MealRepository extends JpaRepository<Meal, Integer> {
 
     /*
      * Método para atualizar uma refeição no banco de dados
@@ -21,5 +21,5 @@ public interface MealRepository extends JpaRepository<Meal, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Meal r SET r.name = :name, r.ingredients = :ingredients, r.cost = :cost, r.restaurantId = :restaurantId WHERE r.id = :id")
-    int updateMeal(Long id, String name, String ingredients, BigDecimal cost, int restaurantId);
+    int updateMeal(int id, String name, String ingredients, BigDecimal cost, int restaurantId);
 }

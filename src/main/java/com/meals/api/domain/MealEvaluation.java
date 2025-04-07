@@ -9,44 +9,44 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "mealevaluation")
-public class RefeicaoEvaluation {
+public class MealEvaluation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "id_meal")
-    public Long idRefeicao;
+    private int id;
+    @Column(name = "meal_id")
+    public int mealId;
     public int evaluation;
     public String comment;
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setIdRefeicao(Long idRefeicao) {
-        this.idRefeicao = idRefeicao;
+    public int getMealId() {
+        return mealId;
     }
 
-    public Long getIdRefeicao() {
-        return idRefeicao;
-    }
-
-    public void setEvaluation(int evaluation) {
-        this.evaluation = evaluation;
+    public void setMealId(int mealId) {
+        this.mealId = mealId;
     }
 
     public int getEvaluation() {
         return evaluation;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setEvaluation(int evaluation) {
+        this.evaluation = evaluation;
     }
 
     public String getComment() {
         return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
