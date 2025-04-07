@@ -30,4 +30,9 @@ public class MealEvaluationController {
         return mealEvaluationService.save(mealEvaluation);
 
     }
+
+    @GetMapping("/avarage-evaluations")
+    public Double mealAverageEvaluation(@PathVariable int mealId) {
+        return mealEvaluationService.mealAverageEvaluation(mealId);
+    }
 }

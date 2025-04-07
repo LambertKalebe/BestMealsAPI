@@ -24,4 +24,8 @@ public class MealEvaluationService {
     public List<MealEvaluation> findAll() {
         return mealEvaluationRepository.findAll();
     }
+
+    public Double mealAverageEvaluation(int mealId) {
+        return mealEvaluationRepository.mealAverageEvaluation(mealId);
+    }
 }
