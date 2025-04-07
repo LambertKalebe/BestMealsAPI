@@ -29,7 +29,7 @@ public class MealController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Meal> findById(@PathVariable Long id) {
+    public Optional<Meal> findById(@PathVariable int id) {
         return mealService.findById(id);
     }
 
@@ -39,7 +39,7 @@ public class MealController {
     }
 
     @PutMapping("/{id}")
-    public Meal updateMeal(@PathVariable Long id, @RequestBody Meal meal) {
+    public Meal updateMeal(@PathVariable int id, @RequestBody Meal meal) {
         mealService.update(id,
                 meal.getName(),
                 meal.getIngredients(),
@@ -49,7 +49,7 @@ public class MealController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
+    public String delete(@PathVariable int id) {
         mealService.delete(id);
         return "Refeição deletada com sucesso!";
     }

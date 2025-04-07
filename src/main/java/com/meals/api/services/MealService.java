@@ -27,11 +27,11 @@ public class MealService {
         return mealRepository.save(meal);
     }
 
-    public void delete(Long id) {
+    public void delete(int id) {
         mealRepository.deleteById(id);
     }
 
-    public Optional<Meal> findById(Long id) {
+    public Optional<Meal> findById(int id) {
         return mealRepository.findById(id);
     }
 
@@ -39,7 +39,7 @@ public class MealService {
         return mealRepository.findAll();
     }
 
-    public int update(Long id, String name, String ingredients, BigDecimal cost, int restaurantId) {
+    public int update(int id, String name, String ingredients, BigDecimal cost, int restaurantId) {
         return mealRepository.updateMeal(id, name, ingredients, cost, restaurantId);
     }
 }
