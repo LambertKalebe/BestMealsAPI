@@ -25,7 +25,7 @@ public class RestaurantEvaluationController {
         this.restaurantEvaluationService = restaurantEvaluationService;
     }
 
-    @GetMapping("/avarage-evaluation")
+    @GetMapping("/avarage-evaluations")
     public Double restaurantAverageEvaluation(@PathVariable int restaurantId) {
         return restaurantEvaluationService.restaurantAverageEvaluation(restaurantId);
     }
